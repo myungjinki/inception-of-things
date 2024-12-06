@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route
+  namespace: dev
+spec:
+  entryPoints:
+    - wil
+  routes:
+    - match: PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: wil-playground
+          port: 8888

@@ -1,0 +1,11 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: default-backend
+spec:
+  routes:
+    - match: PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: app-three
+          port: 80

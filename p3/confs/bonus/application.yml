@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitlab-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: gitlab
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: manifests
+    repoURL: "http://gitlab.192.168.56.110.nip.io/root/hyunghki.git"
+    targetRevision: master
+  syncPolicy:
+    automated:
+      prune: true
